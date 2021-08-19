@@ -76,11 +76,15 @@ const usuariosDelete = async(req, res = response) => {
 
     const { id } = req.params;
 
+    //const uid = req.uid;  ====> Viene de validar-jwt.js
+
     // Borrado Físicamente
     //const usuario = await Usuario.findByIdAndDelete(id);
 
     // Borrado lógico
     const usuario = await Usuario.findByIdAndUpdate(id, {estado: false });
+
+    //const usuarioAutenticado = req.usuario; ===> Viene de validar-jwt.js
 
     res.json(usuario);
 }
